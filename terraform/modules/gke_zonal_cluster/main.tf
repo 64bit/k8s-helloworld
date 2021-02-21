@@ -41,6 +41,8 @@ resource "google_container_node_pool" "main" {
   location   = var.zone
   cluster    = google_container_cluster.main.name
 
+  initial_node_count = 1
+
   autoscaling {
       min_node_count = 1
       max_node_count = var.max_node_count
