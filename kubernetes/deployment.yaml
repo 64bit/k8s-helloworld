@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: apolloio
+  name: apolloio
+  labels:
+    app: apolloio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apolloio
+  template:
+    metadata:
+      labels:
+        app: apolloio
+    spec:
+      containers:
+      - name: apolloio
+        image: us.gcr.io/apolloio/apolloio:f04ed3098f7a21b27626c29838418b47e1d91cbd
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 3
