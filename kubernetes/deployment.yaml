@@ -6,7 +6,11 @@ metadata:
   labels:
     app: apolloio
 spec:
-  replicas: 1
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 50%
   selector:
     matchLabels:
       app: apolloio
@@ -20,6 +24,9 @@ spec:
         image: us.gcr.io/apolloio/apolloio:f04ed3098f7a21b27626c29838418b47e1d91cbd
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
         livenessProbe:
           httpGet:
             path: /health
