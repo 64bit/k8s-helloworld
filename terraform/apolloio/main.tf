@@ -1,5 +1,6 @@
 provider "google" {
     project = var.project
+    region = "us-central1"
 }
 
 module "apolloio_gke_cluster" {

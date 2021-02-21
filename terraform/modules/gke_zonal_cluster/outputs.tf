@@ -1,3 +1,3 @@
-output "service_account" {
-    value = google_service_account.main
+output "ingress_ip" {
+    value = google_compute_address.ingress_ip.address
 }
