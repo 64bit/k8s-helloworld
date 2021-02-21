@@ -85,3 +85,11 @@ Currently all manifests are defined in `kubenertes` doesn't have templating - im
 
 For us to allow user to only access app on HTTPS we can set an annotation on Ingress resource
 `kubernetes.io/ingress.allow-http: "false"`
+
+# Demo
+
+## Horizontal Pod Autoscaler Demo
+
+Here's the link to video which shows how Pods scale up from 2 to 4 when load is generated on https://gigapotential.dev using Apache Benchmark tool `ab`:
+
+https://drive.google.com/file/d/13GK7MfcJsqQxZ1xsUEhaDqyjThlPd1cL/view?usp=sharing
