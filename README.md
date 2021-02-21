@@ -58,7 +58,7 @@ Kubernetes is a container orchestrator to run containers at scale, also known as
 
 Every resource on k8s is managed by one or more controllers - the only purpose of these controllers is to run reconciliation loop - to bring current state of cluster to desired state.
 
-## Resources for appoloio app on GKE
+## Resources for apolloio app on GKE
 The app hosted on `https://gigapotential.dev` is managed by following k8s resources:
 1. `Namespace`: Namespace is a logical contruct enabling multitenancy on single cluster. See [kubernetes/namespace.yaml](./kubernetes/namespace.yaml)
 2. `Deployment` : A deployment resource is desired replicas of Pods we wish to run. See [kubernetes/deployment.yaml](./kubernetes/deployment.yaml)
