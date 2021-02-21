@@ -1,0 +1,9 @@
+apiVersion: networking.gke.io/v1beta2
+kind: ManagedCertificate
+metadata:
+  name: apolloio
+  namespace: apolloio
+spec:
+  domains:
+    - gigapotential.dev
+    - www.gigapotential.dev
