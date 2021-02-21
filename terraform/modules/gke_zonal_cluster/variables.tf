@@ -2,6 +2,11 @@ variable "cluster_name" {
     description = "Name of the GKE cluster"
 }
 
+variable "region" {
+    type = string
+    default = "us-central1"
+}
+
 variable "zone" {
     default = "us-central1-a"
 }
@@ -24,8 +29,4 @@ variable "min_master_version" {
     default = "1.16"
 }
 
-variable "project" {
-    type = string
-    description = "GCP Project"
-    default = "apolloio"
-}
+

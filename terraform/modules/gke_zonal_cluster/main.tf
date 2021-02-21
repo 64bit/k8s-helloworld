@@ -4,11 +4,6 @@ resource "google_project_service" "main" {
   disable_on_destroy =  false
 }
 
-resource "google_service_account" "main" {
-  account_id = "sa-${var.cluster_name}"
-  description = "Service Account for ${var.cluster_name}"
-}
-
 resource "google_container_cluster" "main" {
   name     = var.cluster_name
   location = var.zone
@@ -41,6 +36,8 @@ resource "google_container_node_pool" "main" {
   location   = var.zone
   cluster    = google_container_cluster.main.name
 
+  initial_node_count = 1
+
   autoscaling {
       min_node_count = 1
       max_node_count = var.max_node_count
@@ -56,7 +53,6 @@ resource "google_container_node_pool" "main" {
     machine_type = var.machine_type
 
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
-    service_account = google_service_account.main.email
     oauth_scopes    = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
@@ -65,4 +61,10 @@ resource "google_container_node_pool" "main" {
   depends_on = [
     google_project_service.main
   ]
+}
+
+resource "google_compute_address" "ingress_ip" {
+    name = "ingress-ip-${var.cluster_name}"
+    address_type = "EXTERNAL"
+    region = var.region
 }
