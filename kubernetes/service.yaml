@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: apolloio
+  name: apolloio
+spec:
+  selector:
+    app: apolloio
+  ports:
+    - port: 80
+      targetPort: 80
+  type: NodePort
